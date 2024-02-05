@@ -1,0 +1,11 @@
+CREATE TABLE Species (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+insert:
+INSERT OR IGNORE INTO Species (name)
+VALUES (?);
+
+selectAll:
+SELECT * FROM Species;

@@ -1,0 +1,13 @@
+CREATE TABLE Breed (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    speciesId INTEGER NOT NULL,
+    FOREIGN KEY(speciesId) REFERENCES Species(id)
+);
+
+insert:
+INSERT OR IGNORE INTO Breed (name, speciesId)
+VALUES (?, ?);
+
+selectAll:
+SELECT * FROM Breed;

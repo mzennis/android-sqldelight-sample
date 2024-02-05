@@ -1,0 +1,21 @@
+CREATE TABLE Animal (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    shortDesc TEXT,
+    imageUrl TEXT,
+    speciesId INTEGER NOT NULL,
+    breedId INTEGER,
+    FOREIGN KEY(speciesId) REFERENCES Species(id),
+    FOREIGN KEY(breedId) REFERENCES Breed(id)
+);
+
+insert:
+INSERT OR REPLACE INTO Animal (name, shortDesc, imageUrl, speciesId, breedId)
+VALUES (?, ?, ?, ?, ?);
+
+getAll:
+SELECT Animal.name AS animalName, shortDesc, imageUrl, Species.name AS species, Breed.name AS breed
+FROM Animal, Species, Breed WHERE Animal.speciesId = Species.id AND Animal.breedId = Breed.id;
+
+updateImageUrlById:
+UPDATE Animal SET imageUrl = ? WHERE id = ?;
